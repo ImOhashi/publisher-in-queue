@@ -15,7 +15,7 @@ public class ProducerController {
     @Autowired
     private RabbitMQSender rabbitMQSender;
 
-    @PostMapping(value = "/producer")
+    @PostMapping("/producer")
     public String producer(@RequestBody User user) {
         this.rabbitMQSender.send(user);
         return "Message sent to the RabbitMq successfully";

@@ -15,7 +15,7 @@ public class RabbitMQSender {
     @Value("${rabbitmq.exchange}")
     private String exchange;
 
-    @Value("rabbitmq.routingkey")
+    @Value("${rabbitmq.routingkey}")
     private String routingKey;
 
     public void send(User user) {
