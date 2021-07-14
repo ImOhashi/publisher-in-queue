@@ -1,22 +1,31 @@
 package com.example.publisherinqueue.model;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import org.hibernate.validator.constraints.Length;
 
-@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@id", scope = User.class)
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 public class User {
 
-    private int id;
+    @NotNull
+    @NotEmpty
+    @Length(min = 5)
     private String name;
+
+    @NotNull
+    @NotEmpty
+    @Length(min = 5)
     private String surname;
+
+    @NotNull
+    @NotEmpty
+    @Length(min = 14)
     private String cpf;
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+    public User(String name, String surname, String cpf) {
+        this.name = name;
+        this.surname = surname;
+        this.cpf = cpf;
     }
 
     public String getName() {
@@ -46,7 +55,6 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", cpf='" + cpf + '\'' +
